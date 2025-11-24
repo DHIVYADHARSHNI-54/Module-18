@@ -24,12 +24,43 @@ To write a Python program to find the shortest possible route that visits every 
 ## PYTHON PROGRAM
 
 ```
-ENTER YOUR CODE HERE
+from sys import maxsize
+from itertools import permutations
+V = 4
+def travellingSalesmanProblem(graph, s):
+	vertex = []
+	for i in range(V):
+		if i != s:
+			vertex.append(i)
+			
+	min_path=maxsize
+	next_permutation=permutations(vertex)
+	for i in next_permutation:
+		current_pathweight = 0
+		
+		k=s
+		for j in i:
+		    current_pathweight+=graph[k][j]
+		    k=j
+		current_pathweight+=graph[k][s]
+		
+		min_path=min(min_path, current_pathweight)
+		
+	return min_path
+
+if __name__ == "__main__":
+
+	# matrix representation of graph
+	graph = [[0, 10, 15, 20], [10, 0, 35, 25],
+			[15, 35, 0, 30], [20, 25, 30, 0]]
+	s = int(input())
+	print(travellingSalesmanProblem(graph, s))
+
 ```
 
 ## OUTPUT
-```
-```
+<img width="388" height="167" alt="image" src="https://github.com/user-attachments/assets/4576b391-080c-4907-9143-0b8f60f0f4b5" />
 
-##RESULT
+## RESULT
+Thus, the Python program to solve the Travelling Salesman Problem using brute-force method was successfully executed and the shortest route was determined.
 
